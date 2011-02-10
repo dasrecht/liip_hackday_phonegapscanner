@@ -63,10 +63,8 @@ BarcodeScanner.prototype.scan = function(types, success, fail, options) {
 
 
     return PhoneGap.exec(function(args) {
-        //alert('gotcha!');
         success(args);
     }, function(args) {
-       //alert('gotcha! - failed');
         fail(args);
     }, 'BarcodeScanner', 'scan', [types, installTitle, installMessage, yesString, noString]);
 };
