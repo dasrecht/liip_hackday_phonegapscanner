@@ -38,7 +38,6 @@ BarcodeScanner.Encode = {
 	}
 
 BarcodeScanner.prototype.scan = function(types, success, fail, options) {
-	
 	/* These are the strings used in the dialog that appears if ZXing isn't installed */
 	var installTitle = "Install Barcode Scanner?";
 	var installMessage = "This requires the free Barcode Scanner app. Would you like to install it now?";
@@ -61,11 +60,13 @@ BarcodeScanner.prototype.scan = function(types, success, fail, options) {
 			noString = options.noString;
 		}
 	}
-	
-	
+
+
     return PhoneGap.exec(function(args) {
+        //alert('gotcha!');
         success(args);
     }, function(args) {
+       //alert('gotcha! - failed');
         fail(args);
     }, 'BarcodeScanner', 'scan', [types, installTitle, installMessage, yesString, noString]);
 };

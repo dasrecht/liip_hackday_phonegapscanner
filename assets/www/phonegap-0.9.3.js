@@ -434,20 +434,22 @@ PhoneGap.exec = function(success, fail, service, action, args) {
         
         // Note: Device returns string, but for some reason emulator returns object - so convert to string.
         var r = ""+PluginManager.exec(service, action, callbackId, this.stringify(args), true);
-        
+        alert(r);
         // If a result was returned
         if (r.length > 0) {
             eval("var v="+r+";");
         
             // If status is OK, then return value back to caller
             if (v.status == PhoneGap.callbackStatus.OK) {
-
+alert('ok line 444');
                 // If there is a success callback, then call it now with returned value
                 if (success) {
+ alert('success!');
                     try {
                        	success(v.message);
                     }
                     catch (e) {
+alert('cought success callback');
                         console.log("Error in success callback: "+callbackId+" = "+e);
                     }
 
@@ -456,12 +458,13 @@ PhoneGap.exec = function(success, fail, service, action, args) {
                         delete PhoneGap.callbacks[callbackId];
                     }
                 }
+                alert(v.message);
                 return v.message;
             }
 
             // If no result
             else if (v.status == PhoneGap.callbackStatus.NO_RESULT) {
-                    
+                    alert('no_result');
                 // Clear callback if not expecting any more results
                 if (!v.keepCallback) {
                     delete PhoneGap.callbacks[callbackId];
@@ -470,6 +473,7 @@ PhoneGap.exec = function(success, fail, service, action, args) {
 
             // If error, then display error
             else {
+               alert("line 473");
                 console.log("Error: Status="+r.status+" Message="+v.message);
 
                 // If there is a fail callback, then call it now with returned value
@@ -489,7 +493,9 @@ PhoneGap.exec = function(success, fail, service, action, args) {
                 return null;
             }
         }
+        else {alert('line 493');}
     } catch (e) {
+        alert('line 494');
         console.log("Error: "+e);
     }
 };

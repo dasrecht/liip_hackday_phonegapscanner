@@ -2,9 +2,19 @@
 <html>
 <head>
 <title>PhoneGap</title>
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8" src="phonegap-0.9.3.js"></script>
+<script type="text/javascript" charset="utf-8" src="barcodescanner.js"></script>
 </head>
 <body>
 <h1>HACKDAY!</h1>
+
+<script type="text/javascript">
+/* When this function is called, PhoneGap has been initialized and is ready to roll */
+   function handleScan() {
+   	var barcodeScanner = window.plugins.barcodeScanner;
+   	barcodeScanner.scan([BarcodeScanner.Type.QR_CODE], function(result){alert("We got a barcode: " + result);}, function(error) {alert("Scanning failed: " + error);},{yesString: "Install"});
+   }
+</script>
+<input type="button" value="scan!" onclick="handleScan()" /><hr>
 </body>
 </html>

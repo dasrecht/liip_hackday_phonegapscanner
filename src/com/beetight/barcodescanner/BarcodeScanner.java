@@ -11,19 +11,16 @@ package com.beetight.barcodescanner;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import com.phonegap.DroidGap;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+
 import com.phonegap.api.PhonegapActivity;
 import com.phonegap.api.Plugin;
 import com.phonegap.api.PluginResult;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-
-import android.content.ActivityNotFoundException;
-
-import android.net.Uri;
 
 /**
  * This calls out to the ZXing barcode reader and returns the result.
@@ -198,7 +195,7 @@ public class BarcodeScanner extends Plugin {
 							} catch (ActivityNotFoundException e) { 
 //							We don't have the market app installed, so download it directly.
 				       			Intent in = new Intent(Intent.ACTION_VIEW);
-			        			in.setData(Uri.parse("http://zxing.googlecode.com/files/BarcodeScanner3.5.apk"));
+			        			in.setData(Uri.parse("http://zxing.googlecode.com/files/BarcodeScanner3.53.apk"));
 			        			context.startActivity(in);
 
 							}
